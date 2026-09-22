@@ -1,0 +1,164 @@
+/* ==========================================================
+   Urología Funcional — tokens de diseño v1.0
+   Dos superficies: [data-surface="kiosk"] y [data-surface="staff"]
+   ========================================================== */
+:root {
+  /* ---------- Fuentes ---------- */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-ui: 'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  /* ---------- Navy (tinta y estructura; brand #273A5E) ---------- */
+  --navy-900: #12203a;
+  --navy-800: #1b2a46;
+  --navy-700: #273a5e;
+  --navy-600: #3b5080;
+  --navy-300: #aeb8cc;
+  --navy-100: #e3e8f1;
+  --navy-50: #f0f3f8;
+
+  /* ---------- Teal (única señal: seleccionado / activo / enlace; brand #078A86) ---------- */
+  --teal-800: #085c59;
+  --teal-700: #0b6e6b;
+  --teal-600: #078a86;
+  --teal-300: #7cc8c4;
+  --teal-100: #cfeae8;
+  --teal-50: #e3f3f1;
+
+  /* ---------- Sand (papel) ---------- */
+  --sand-900: #5e5a52;
+  --sand-400: #c7bdae;
+  --sand-300: #d9d0c3;
+  --sand-200: #efe8de;
+  --sand-150: #e6e1d9;
+  --sand-100: #f6f2ec;
+  --sand-50: #fffdfa;
+
+  /* ---------- Tinta ---------- */
+  --ink: #1c2434;
+  --ink-2: #5e6673;
+  --ink-3: #8a9099;
+
+  /* ---------- Semánticos ---------- */
+  --red-700: #a4231a;
+  --red-500: #d0392e;
+  --red-50: #fbeae7;
+  --amber-800: #7a4e00;
+  --amber-500: #d99a1e;
+  --amber-50: #fff3db;
+  --green-800: #1f6b3a;
+  --green-500: #3a9a5c;
+  --green-50: #e6f4ea;
+  --severity-none: var(--navy-300);
+  --severity-mild: var(--green-500);
+  --severity-moderate: var(--amber-500);
+  --severity-severe: var(--red-500);
+  --whatsapp: #128c7e;
+
+  /* ---------- Roles de superficie ---------- */
+  --bg: var(--sand-100);
+  --surface: var(--sand-50);
+  --surface-sunken: var(--sand-200);
+  --hairline: var(--sand-150);
+  --hairline-strong: var(--sand-300);
+  --overlay: rgba(27, 42, 70, 0.45);
+  --focus: var(--teal-600);
+
+  /* ---------- Elevación (las tarjetas nunca tienen sombra) ---------- */
+  --shadow-0: none;
+  --shadow-pop: 0 1px 2px rgba(28, 36, 52, 0.06), 0 8px 24px -8px rgba(28, 36, 52, 0.14);
+  --shadow-sheet: 0 12px 32px -8px rgba(28, 36, 52, 0.24);
+  --shadow-press: inset 0 2px 0 rgba(28, 36, 52, 0.1);
+
+  /* ---------- Espaciado (base 4) ---------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-24: 96px;
+
+  /* ---------- Radio ---------- */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-pill: 999px;
+
+  /* ---------- Escala tipográfica (rem relativo a la superficie) ---------- */
+  --fs-micro: 0.75rem;
+  --lh-micro: 1.35;
+  --fs-small: 0.867rem;
+  --lh-small: 1.45;
+  --fs-body: 1rem;
+  --lh-body: 1.5;
+  --fs-lead: 1.13rem;
+  --lh-lead: 1.45;
+  --fs-h3: 1.27rem;
+  --lh-h3: 1.35;
+  --fs-h2: 1.6rem;
+  --lh-h2: 1.25;
+  --fs-h1: 2rem;
+  --lh-h1: 1.15;
+  --fs-display: 2.67rem;
+  --lh-display: 1.1;
+  --fs-numeral: 1.87rem;
+  --lh-numeral: 1;
+
+  /* ---------- Dimensiones de control ---------- */
+  --ctl: 40px;
+  --ctl-sm: 32px;
+  --ctl-kiosk: 64px;
+  --ctl-kiosk-sm: 56px;
+  --row-staff: 48px;
+  --row-agenda: 56px;
+  --sidebar-w: 240px;
+  --sidebar-rail: 64px;
+  --drawer-w: 560px;
+  --drawer-w-lg: 720px;
+  --kiosk-header-h: 80px;
+  --kiosk-footer-h: 104px;
+  --staff-header-h: 56px;
+
+  /* ---------- Z-index ---------- */
+  --z-sticky: 10;
+  --z-sidebar: 20;
+  --z-dropdown: 30;
+  --z-drawer: 40;
+  --z-modal: 50;
+  --z-toast: 60;
+  --z-tooltip: 70;
+
+  /* ---------- Movimiento ---------- */
+  --dur-instant: 80ms;
+  --dur-fast: 160ms;
+  --dur-base: 240ms;
+  --dur-slow: 400ms;
+  --dur-reveal: 600ms;
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+html {
+  font-size: 16px;
+}
+[data-surface='kiosk'] {
+  font-size: 19px;
+  --ctl: var(--ctl-kiosk);
+  --ctl-sm: var(--ctl-kiosk-sm);
+  --r-ctl: var(--r-lg);
+}
+[data-surface='staff'] {
+  font-size: 15px;
+  --r-ctl: var(--r-sm);
+}
+@media (max-width: 760px) {
+  [data-surface='kiosk'] {
+    font-size: 17px;
+  }
+}

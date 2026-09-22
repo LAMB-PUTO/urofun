@@ -1,0 +1,277 @@
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes step-in-back {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes drawer-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+@keyframes rec-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+@keyframes dots {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+@keyframes row-arrive {
+  from {
+    background-color: var(--teal-50);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.step-enter {
+  animation: step-in var(--dur-base) var(--ease-out) 60ms both;
+}
+.step-enter--back {
+  animation: step-in-back var(--dur-base) var(--ease-out) 60ms both;
+}
+.fade-in {
+  animation: fade-in var(--dur-base) var(--ease-out) both;
+}
+.rise-in {
+  animation: rise-in var(--dur-base) var(--ease-out) both;
+}
+
+.drawer[open] {
+  animation: drawer-in var(--dur-base) var(--ease-out);
+}
+.modal[open] {
+  animation: modal-in var(--dur-base) var(--ease-out);
+}
+.drawer::backdrop,
+.modal::backdrop {
+  background: var(--overlay);
+  animation: fade-in var(--dur-base) var(--ease-out);
+}
+.toast {
+  animation: rise-in var(--dur-base) var(--ease-out);
+}
+.toast.is-leaving {
+  transition: opacity var(--dur-fast) var(--ease-in);
+  opacity: 0;
+}
+
+.option,
+.toggle,
+.btn,
+.table tbody tr,
+.nav__item,
+.queue__row,
+.slot,
+.segmented__option {
+  transition:
+    background-color var(--dur-fast) var(--ease-standard),
+    border-color var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+}
+.option:active,
+.toggle:active {
+  transform: scale(0.985);
+  box-shadow: var(--shadow-press);
+  transition-duration: var(--dur-instant);
+}
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-press);
+  transition-duration: var(--dur-instant);
+}
+.option__check path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+}
+.option:has(:checked) .option__check path,
+.toggle:has(:checked) .toggle__check path {
+  animation: draw 200ms var(--ease-out) forwards;
+}
+.toggle__check path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+}
+
+.progress__fill,
+.scorebar__fill {
+  transition: width var(--dur-slow) var(--ease-out);
+}
+.stepper__segment {
+  transition: opacity var(--dur-base) var(--ease-standard);
+}
+.table tbody tr.is-new,
+.queue__row.is-new {
+  animation:
+    fade-in var(--dur-base) var(--ease-out),
+    row-arrive 1.2s var(--ease-standard);
+}
+.skeleton {
+  animation: skeleton-pulse 1.6s ease-in-out infinite;
+}
+.skeleton--delayed {
+  opacity: 0;
+  animation:
+    fade-in 1ms linear 300ms forwards,
+    skeleton-pulse 1.6s ease-in-out 300ms infinite;
+}
+.rec-dot {
+  animation: rec-pulse 1s ease-in-out infinite;
+}
+.dots > i {
+  animation: dots 900ms ease-in-out infinite;
+}
+.dots > i:nth-child(2) {
+  animation-delay: 150ms;
+}
+.dots > i:nth-child(3) {
+  animation-delay: 300ms;
+}
+.success-check circle {
+  stroke-dasharray: 176;
+  stroke-dashoffset: 176;
+  animation: draw var(--dur-reveal) var(--ease-out) forwards;
+}
+.success-check path {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: draw 320ms var(--ease-out) 400ms forwards;
+}
+.spin {
+  animation: spin 900ms linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after,
+  *::backdrop {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+  .spin,
+  .dots > i {
+    animation: none;
+  }
+  .dots > i {
+    opacity: 0.6;
+  }
+  .step-enter,
+  .step-enter--back,
+  .drawer[open],
+  .modal[open],
+  .toast {
+    transform: none !important;
+  }
+  .skeleton,
+  .skeleton--delayed {
+    animation: none;
+    opacity: 0.8;
+  }
+  .rec-dot {
+    animation: none;
+  }
+  .success-check circle,
+  .success-check path {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+:root[data-reduced-motion] *,
+:root[data-reduced-motion] *::before,
+:root[data-reduced-motion] *::after,
+:root[data-reduced-motion] *::backdrop {
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 1ms !important;
+}
+:root[data-reduced-motion] .spin,
+:root[data-reduced-motion] .dots > i {
+  animation: none;
+}
+:root[data-reduced-motion] .dots > i {
+  opacity: 0.6;
+}

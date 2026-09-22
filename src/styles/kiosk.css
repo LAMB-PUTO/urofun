@@ -1,0 +1,298 @@
+/* ==========================================================
+   Kiosko (tablet del paciente)
+   ========================================================== */
+.kiosk {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* ---------- Landing ---------- */
+.kiosk-landing {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.kiosk-landing__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-5) var(--sp-8) 0;
+}
+.kiosk-landing__logo {
+  height: 104px;
+  width: auto;
+}
+.kiosk-landing__main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: var(--sp-8) var(--sp-8) var(--sp-12);
+  gap: var(--sp-8);
+}
+.kiosk-landing__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  max-width: 34rem;
+}
+.kiosk-landing__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-8) var(--sp-6);
+  color: var(--ink-2);
+  font-size: var(--fs-small);
+}
+/* Tablet vertical: el saludo arriba, no flotando a media pantalla. */
+@media (orientation: portrait) {
+  .kiosk-landing__main {
+    justify-content: flex-start;
+    padding-top: clamp(32px, 12vh, 180px);
+  }
+}
+@media (max-width: 760px) {
+  .kiosk-landing__top,
+  .kiosk-landing__foot {
+    padding-left: var(--sp-4);
+    padding-right: var(--sp-4);
+  }
+  .kiosk-landing__main {
+    padding: var(--sp-6) var(--sp-4) var(--sp-10);
+  }
+  .ledger__row {
+    grid-template-columns: 48px 1fr auto;
+    min-height: 96px;
+    gap: var(--sp-3);
+  }
+}
+
+/* ---------- Wizard ---------- */
+.wizard {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.wizard__header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  height: var(--kiosk-header-h);
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(0, 3fr) minmax(120px, 1fr);
+  align-items: center;
+  gap: var(--sp-4);
+  padding: 0 var(--sp-6);
+  background: var(--bg);
+  border-bottom: 1px solid var(--hairline-strong);
+}
+.wizard__header > :last-child {
+  justify-self: end;
+}
+.wizard__stepper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+.wizard__stepper .eyebrow {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wizard__scroll {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+.wizard__body {
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: var(--sp-10) var(--sp-8) calc(var(--kiosk-footer-h) + var(--sp-12));
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+.wizard__body--wide {
+  max-width: 44rem;
+}
+.wizard__question {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.wizard__question .h2 {
+  outline: none;
+}
+.wizard__footer {
+  position: sticky;
+  bottom: 0;
+  z-index: var(--z-sticky);
+  min-height: var(--kiosk-footer-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-8);
+  padding-bottom: calc(var(--sp-4) + env(safe-area-inset-bottom));
+  background: var(--surface-sunken);
+  border-top: 1px solid var(--hairline-strong);
+}
+.wizard__footer .btn--primary {
+  min-width: 220px;
+}
+.wizard__hint {
+  color: var(--ink-2);
+  font-size: var(--fs-small);
+}
+.wizard__blocker {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--sp-2);
+}
+@media (max-width: 760px) {
+  .wizard__header {
+    grid-template-columns: auto 1fr auto;
+    padding: 0 var(--sp-3);
+    gap: var(--sp-2);
+  }
+  .wizard__body {
+    padding: var(--sp-6) var(--sp-4) calc(var(--kiosk-footer-h) + var(--sp-8));
+  }
+  .wizard__footer {
+    padding-left: var(--sp-4);
+    padding-right: var(--sp-4);
+  }
+  .wizard__footer .btn--primary {
+    min-width: 160px;
+  }
+}
+
+/* ---------- Datos: fecha de nacimiento ---------- */
+.dob {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: var(--sp-3);
+}
+.dob .input {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.dob__live {
+  margin-top: var(--sp-2);
+  color: var(--teal-800);
+  font-weight: 500;
+}
+
+/* ---------- Revisión ---------- */
+.review {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--hairline-strong);
+}
+.review__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: var(--sp-4);
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.review__label {
+  color: var(--ink-2);
+  font-size: var(--fs-small);
+  margin-bottom: 2px;
+}
+
+/* ---------- Pantalla final ---------- */
+.kiosk-done {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--sp-6);
+  padding: var(--sp-8);
+}
+.kiosk-done__text {
+  max-width: 34rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+/* ---------- Consentimiento ---------- */
+.consent {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: flex-start;
+  padding: var(--sp-5);
+  border: 1.5px solid var(--hairline-strong);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  cursor: pointer;
+}
+.consent:has(:checked) {
+  border-color: var(--teal-700);
+  background: var(--teal-50);
+}
+.consent__text {
+  color: var(--ink);
+  font-size: var(--fs-body);
+}
+
+/* ---------- Búsqueda de recurrente ---------- */
+.lookup-result {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
+  border: 1.5px solid var(--hairline-strong);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  text-align: left;
+  width: 100%;
+}
+.lookup-result:hover {
+  border-color: var(--navy-600);
+}
+.code-input {
+  display: flex;
+  gap: var(--sp-3);
+  justify-content: center;
+}
+.code-input .input {
+  width: 72px;
+  height: 84px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-display);
+  padding: 0;
+}
+
+/* Consentimiento: la casilla se ve marcada (los estilos de .toggle no aplican fuera de .toggle). */
+.consent:has(:checked) .toggle__box {
+  background: var(--teal-700);
+  border-color: var(--teal-700);
+}
+.consent:has(:checked) .toggle__check {
+  opacity: 1;
+}
+.consent:has(:checked) .toggle__check path {
+  stroke-dashoffset: 0;
+  animation: none;
+}
+.consent:has(:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
