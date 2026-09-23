@@ -770,3 +770,68 @@
   border-radius: 50%;
   background: var(--red-500);
 }
+
+/* ==========================================================
+   Teléfono: el panel se diseñó para escritorio, pero recepción
+   lo abre del celular. Aquí se agrandan los toques y se dejan
+   de truncar los nombres. Todo va acotado a la superficie
+   "staff" para no alterar los controles grandes del kiosko.
+   ========================================================== */
+@media (max-width: 560px) {
+  /* Nada por debajo del mínimo cómodo para el pulgar. */
+  [data-surface='staff'] .icon-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  [data-surface='staff'] .icon-btn--sm {
+    min-width: 40px;
+    min-height: 40px;
+  }
+  [data-surface='staff'] .input,
+  [data-surface='staff'] .select {
+    min-height: 44px;
+  }
+  [data-surface='staff'] .btn {
+    min-height: 44px;
+  }
+  [data-surface='staff'] .btn--sm {
+    min-height: 40px;
+  }
+  [data-surface='staff'] .segmented__option {
+    min-height: 44px;
+  }
+
+  /* Sala: el nombre se queda con todo el ancho y el chip baja a su renglón. */
+  .queue__row {
+    grid-template-columns: auto 1fr;
+    row-gap: var(--sp-2);
+    padding: var(--sp-3);
+  }
+  .queue__right {
+    grid-column: 2;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  /* Agenda: tira de días compacta y renglones de horario más bajos. */
+  .daystrip {
+    gap: 0;
+  }
+  .daystrip__day {
+    min-height: 48px;
+    font-size: var(--fs-micro);
+  }
+  .daystrip__num {
+    font-size: var(--fs-h3);
+  }
+  .slot {
+    grid-template-columns: 56px 1fr;
+    min-height: 48px;
+  }
+  .slot__time {
+    font-size: var(--fs-small);
+  }
+}

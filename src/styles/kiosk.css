@@ -296,3 +296,89 @@
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
+
+/* ==========================================================
+   Teléfono (< 560px). El kiosko vive en una tablet, pero la
+   portada, el booking y el cuestionario también se abren desde
+   un celular: aquí se evita que el pie se parta letra por letra
+   y que los botones de la cabecera aplasten el progreso.
+   ========================================================== */
+@media (max-width: 560px) {
+  /* El aviso ocupa su propio renglón; los dos enlaces comparten el siguiente. */
+  .kiosk-landing__foot {
+    flex-wrap: wrap;
+    row-gap: var(--sp-3);
+  }
+  .kiosk-landing__foot > :first-child {
+    flex: 1 0 100%;
+  }
+  /* Los dos enlaces toman el renglón completo y se acomodan; nunca se salen. */
+  .kiosk-landing__foot > :last-child {
+    flex: 1 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-2) var(--sp-3);
+  }
+  .kiosk-landing__foot .btn {
+    min-height: var(--ctl);
+  }
+
+  /* Cabecera del cuestionario: botones solo con icono, el progreso se queda con el ancho. */
+  .wizard__header .btn__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .wizard__header .btn--lg {
+    min-width: var(--ctl);
+    width: var(--ctl);
+    padding: 0;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================
+   Teléfono: el kiosko está calibrado para una tablet vista a
+   un brazo de distancia (raíz 19px, controles de 64px). En un
+   celular sostenido en la mano eso deja caber media pregunta,
+   así que aquí se baja un escalón la escala completa.
+   ========================================================== */
+@media (max-width: 560px) {
+  [data-surface='kiosk'] {
+    font-size: 16px;
+    --ctl: 56px;
+    --ctl-sm: 48px;
+  }
+
+  /* Portada: logo más discreto y fecha que puede bajar de renglón. */
+  .kiosk-landing__top {
+    flex-wrap: wrap;
+    row-gap: var(--sp-2);
+  }
+  .kiosk-landing__logo {
+    height: 80px;
+  }
+
+  /* Cuestionario: menos aire lateral para que quepa el texto de las opciones. */
+  .wizard__body {
+    padding-top: var(--sp-6);
+  }
+  .option,
+  .toggle {
+    gap: var(--sp-3);
+    padding-left: var(--sp-4);
+    padding-right: var(--sp-4);
+  }
+
+  /* Los enlaces "Cambiar" de la revisión deben poder tocarse con el pulgar. */
+  .review .btn--link {
+    min-height: var(--ctl-sm);
+  }
+}

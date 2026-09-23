@@ -347,12 +347,12 @@ export const IntakeWizard = () => {
   return (
     <div className="wizard">
       <header className="wizard__header">
-        <Button variant="ghost" size="sm" icon={<ArrowLeft size={22} />} onClick={back} className="btn--lg">
-          {safeIndex === 0 ? 'Salir' : 'Atrás'}
+        <Button variant="ghost" size="sm" icon={<ArrowLeft size={22} />} onClick={back} className="btn--lg" aria-label={safeIndex === 0 ? 'Salir' : 'Atrás'}>
+          <span className="btn__label">{safeIndex === 0 ? 'Salir' : 'Atrás'}</span>
         </Button>
         <Stepper sections={stepperSections} currentIndex={sectionIndex} caption={caption} />
-        <Button variant="secondary" icon={<HelpCircle size={22} />} onClick={() => setHelpOpen(true)} className="btn--lg">
-          Ayuda
+        <Button variant="secondary" icon={<HelpCircle size={22} />} onClick={() => setHelpOpen(true)} className="btn--lg" aria-label="Ayuda">
+          <span className="btn__label">Ayuda</span>
         </Button>
       </header>
 

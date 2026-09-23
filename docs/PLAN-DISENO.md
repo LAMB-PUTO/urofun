@@ -150,3 +150,23 @@ Capturas de verificación de esta sesión: landing (tablet y portrait), wizard (
 ## Accesibilidad verificada (20 sep 2026)
 
 Tras la revisión adversarial: etiquetas asociadas a campos y grupos (`Field` con `useId`), botón cargando con contraste, casilla de consentimiento visible, `prefers-reduced-motion` sin estroboscopio en indicadores, diálogos con ids únicos y cierre nativo sincronizado, scroll al inicio en cada paso, zoom del navegador permitido.
+
+
+## Celular (22 sep 2026)
+
+El sistema se calibró para dos superficies: la tablet del kiosko (raíz 19 px, controles de 64 px) y el escritorio del panel (raíz 15 px). En un celular de 390 a 440 px eso deja caber media pregunta y aprieta el panel. Se agregó un tercer escalón en 560 px.
+
+**Kiosko en celular**
+- Raíz a 16 px y controles a 56 px: entran cinco opciones y media en vez de cuatro y media, sin bajar del mínimo táctil.
+- Cabecera del cuestionario con botones solo de icono, para que la barra de progreso y su leyenda se lean completas.
+- Pie de la portada: el aviso toma su renglón y los enlaces el siguiente. Antes se partía letra por letra.
+- Logo de la portada a 80 px y encabezado que puede envolver.
+
+**Panel en celular**
+- Sala: el nombre usa todo el ancho y el chip de estado baja a su propio renglón, así deja de truncarse.
+- Agenda: tira de días compacta y renglones de horario más bajos.
+- Toques: iconos, campos y botones a 44 px, acciones secundarias a 40 px.
+
+Todas las reglas del panel van acotadas a `[data-surface='staff']`. Sin ese acotamiento, una regla de botón pequeño se filtró al kiosko y encogió el botón Atrás del cuestionario.
+
+Verificado a 390 × 844 y 440 × 956 en las trece pantallas principales: sin desbordes horizontales y sin toques por debajo de 40 px.
